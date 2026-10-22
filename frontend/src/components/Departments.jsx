@@ -1,4 +1,5 @@
 import { useRef } from "react";
+import { Link } from "react-router-dom";
 import useReveal from "../hooks/useReveal";
 import { departments } from "../data/content";
 
@@ -21,14 +22,17 @@ export default function Departments() {
         <ul className="divide-y divide-slate-200 border-y border-slate-200 lg:col-span-8">
           {departments.map((d) => (
             <li key={d.name} data-reveal>
-              <a href="#appointment" className="group grid items-center gap-2 px-2 py-7 transition-colors hover:bg-white sm:grid-cols-12 sm:gap-6 sm:px-5">
+              <Link
+                to="/contact#appointment"
+                className="group grid items-center gap-2 px-2 py-7 transition-colors hover:bg-white sm:grid-cols-12 sm:gap-6 sm:px-5"
+              >
                 <div className="sm:col-span-4">
                   <h3 className="font-display text-2xl font-semibold text-slate-900 transition-colors group-hover:text-teal-800">{d.name}</h3>
                   <p className="mt-1 text-sm font-medium text-teal-700">{d.tag}</p>
                 </div>
                 <p className="text-slate-600 sm:col-span-7">{d.desc}</p>
                 <span className="hidden justify-self-end text-xl text-teal-800 transition-transform group-hover:translate-x-1 sm:col-span-1 sm:block" aria-hidden="true">→</span>
-              </a>
+              </Link>
             </li>
           ))}
         </ul>

@@ -10,17 +10,26 @@ import ContactPage from "./pages/Contactpage";
 
 
 function Layout() {
-  const { pathname } = useLocation();
+  const { pathname, hash } = useLocation();
   const main = useRef(null);
 
-  // Scroll to top + soft fade on every page change
-  useEffect(() => {
-    window.scrollTo(0, 0);
-    const ctx = gsap.context(() => {
-      gsap.fromTo(main.current, { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out", clearProps: "transform" });
-    });
-    return () => ctx.revert();
-  }, [pathname]);
+
+
+useEffect(() => {
+  const ctx = gsap.context(() => {
+    gsap.fromTo(main.current, { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out", clearProps: "transform" });
+  });
+
+  if (hash) {
+    const t = setTimeout(() => {
+      document.getElementById(hash.slice(1))?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 300);
+    return () => { clearTimeout(t); ctx.revert(); };
+  }
+
+  window.scrollTo(0, 0);
+  return () => ctx.revert();
+}, [pathname, hash]);
 
   return (
     <>
