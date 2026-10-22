@@ -9,3 +9,4 @@
 html { scroll-behavior: smooth; }
 body { @apply bg-[#F7FAFC] font-sans text-slate-700 antialiased; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
