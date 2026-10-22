@@ -10,7 +10,11 @@ export default function Footer() {
         </div>
         <address className="text-sm not-italic leading-7 text-slate-600">
           <p className="font-semibold text-slate-900">Contact</p>
-          <a href={"mailto:" + CONTACT.email} className="block transition-colors hover:text-blue-800">{CONTACT.email}</a>
+          <a
+            href={"https://mail.google.com/mail/?view=cm&fs=1&to=" + CONTACT.email}
+            target="_blank"
+            rel="noopener noreferrer"
+          ></a>
           <a href={"tel:" + CONTACT.phone} className="block transition-colors hover:text-blue-800">{CONTACT.phone}</a>
           <p>{CONTACT.address}</p>
         </address>
